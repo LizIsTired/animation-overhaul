@@ -1,5 +1,7 @@
 package net.lizistired.animationoverhaul;
 
+import net.lizistired.animationoverhaul.util.config.AOConfig;
+import net.lizistired.animationoverhaul.util.config.GamePaths;
 import gg.moonflower.pollen.pinwheel.api.client.render.BlockRendererRegistry;
 import net.lizistired.animationoverhaul.animations.entity.CreeperPartAnimator;
 import net.lizistired.animationoverhaul.animations.entity.PlayerPartAnimator;
@@ -16,7 +18,21 @@ import net.minecraft.resource.ResourceType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.nio.file.Path;
+
 public class AnimationOverhaulMain {
+
+	private static AnimationOverhaulMain instance;
+	public static AnimationOverhaulMain getInstance() {
+		return instance;
+	}
+	public AnimationOverhaulMain() {
+		instance = this;
+	}
+	private static AOConfig config;
+	public static AOConfig getConfig() {
+		return config;
+	}
 
 
 	public static final String MOD_ID = "animation_overhaul";
@@ -36,6 +52,12 @@ public class AnimationOverhaulMain {
 
 	public static void onClientInit() {
 		registerTimelineGroupLoader();
+		Path AOFolder = GamePaths.getConfigDirectory().resolve("ao");
+		config = new AOConfig(AOFolder.getParent().resolve("ao.json"), AnimationOverhaulMain.getInstance());
+		config.load();
+		if (getConfig().isEnableMobAnimations()){
+			registerEntityAnimators();
+		}
 		registerEntityAnimators();
 		registerBlockRenderers();
 	}

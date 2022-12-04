@@ -32,8 +32,8 @@ public class TimelineGroupDataLoader implements PollinatedPreparableReloadListen
         Gson gson = new Gson();
 
         Collection<Identifier> passedFiles = resourceManager.findResources("timelinegroups", (string) -> {
-            return string.endsWith(".json");
-        });
+            return string.getPath().endsWith(".json");
+        }).keySet();
 
         //String entity = "bee";
         //EntityType<?> entityType = EntityType.byString(entity).isPresent() ? EntityType.byString(entity).get() : null;
@@ -46,7 +46,7 @@ public class TimelineGroupDataLoader implements PollinatedPreparableReloadListen
         for(Identifier resourceLocation : passedFiles){
             String resourceLocationPath = resourceLocation.getPath();
             try {
-                Resource resource = resourceManager.getResource(resourceLocation);
+                Resource resource = resourceManager.getResource(resourceLocation).get();
                 try {
                     InputStream inputStream = resource.getInputStream();
                     try {
@@ -81,14 +81,12 @@ public class TimelineGroupDataLoader implements PollinatedPreparableReloadListen
                 } catch (Throwable resourceThrowable) {
                     if (resource != null) {
                         try {
-                            resource.close();
                         } catch (Throwable closeResourceThrowable) {
                             resourceThrowable.addSuppressed(closeResourceThrowable);
                         }
                     }
                     throw resourceThrowable;
                 }
-                resource.close();
             } catch (IOException e) {
                 AnimationOverhaulMain.LOGGER.error("Error parsing data upon grabbing resource for resourceLocation " + resourceLocation);
             }

@@ -38,7 +38,11 @@ allprojects {
     repositories {
 		mavenLocal()
         maven { url "https://jitpack.io" }
-        maven { url "https://repo.moonflower.gg/releases" }
+        // for Pollen
+        maven {
+            name 'Moonflower Repo'
+            url "https://repo.moonflower.gg/releases"
+        }
         maven { url "https://maven.parchmentmc.org" }
         maven {
             url "https://www.cursemaven.com"

@@ -1,6 +1,7 @@
 package net.lizistired.animationoverhaul.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -19,7 +20,6 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
@@ -32,7 +32,7 @@ public class TestScreen extends Screen {
 
 
     public TestScreen(Screen screen) {
-        super(new LiteralText("Animation Settings"));
+        super(Text.literal("Animation Settings"));
     }
 
     @Override

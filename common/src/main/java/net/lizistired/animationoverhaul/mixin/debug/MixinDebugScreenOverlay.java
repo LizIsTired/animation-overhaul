@@ -39,7 +39,7 @@ public abstract class MixinDebugScreenOverlay extends DrawableHelper {
     @Inject(method = "renderRightText", at = @At("HEAD"), cancellable = true)
     private void drawTimerDebugInfo(MatrixStack poseStack, CallbackInfo ci){
 
-        if(this.client.options.fov == 72){
+        if(this.client.options.getFov().getValue() == 72){
             poseStack.translate(this.client.getWindow().getScaledWidth() / 4F, 0, 0);
             poseStack.scale(0.75F, 0.75F, 0.75F);
 
@@ -135,7 +135,7 @@ public abstract class MixinDebugScreenOverlay extends DrawableHelper {
     }
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     private void testCompassGadget(MatrixStack poseStack, CallbackInfo ci){
-        if(this.client.options.fov == 73){
+        if(this.client.options.getFov().getValue() == 73){
             ci.cancel();
         }
     }

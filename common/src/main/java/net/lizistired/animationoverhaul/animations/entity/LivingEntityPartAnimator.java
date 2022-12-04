@@ -249,7 +249,6 @@ public class LivingEntityPartAnimator<T extends LivingEntity, M extends EntityMo
         float targetBodyYRot = livingEntity.bodyYaw;
         boolean isMoving = entityAnimationData.getValue(ANIMATION_SPEED_XYZ) > 0.05F
                 || livingEntity.isInSwimmingPose()
-                || livingEntity.shouldLeaveSwimmingPose()
                 || livingEntity.getRoll() > 0;
         float increment = (isMoving ? 20 : 8);
 

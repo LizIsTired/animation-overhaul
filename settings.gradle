@@ -8,7 +8,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "animationoverhaul"
+rootProject.name = "improved-animations"
 
 include("common")
 include("fabric")

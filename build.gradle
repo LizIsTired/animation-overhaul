@@ -16,6 +16,12 @@ subprojects {
         silentMojangMappingsLicense()
     }
 
+    repositories {
+        flatDir {
+            dir "$projectDir/libs/"
+        }
+    }
+
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
         mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"

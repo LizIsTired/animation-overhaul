@@ -7,8 +7,8 @@ license = "GPLv3"
 modId = "${id}"
 version = "${version}"
 displayName = "${name}"
-authors = "Moonflower"
-credits = "James Pelter (Trainguy), Marvin Schürz (MineToBlend)"
+authors = "Qboi123, DrAlpha, Moonflower"
+credits = "fmbellomy, mmm1245, James Pelter (Trainguy), Marvin Schürz (MineToBlend)"
 description = '''
 This is an example starter template.
 '''
@@ -27,11 +27,4 @@ modId = "minecraft"
 mandatory = true
 versionRange = "[1.18,)"
 ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.${id}]]
-modId = "pollen"
-mandatory = true
-versionRange = "[1.0.0,)"
-ordering = "BEFORE"
 side = "BOTH"

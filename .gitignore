@@ -23,3 +23,10 @@ classes/
 common/srcBackup
 forge/srcBackup
 fabric/srcBackup
+
+!common/libs/*.jar
+!fabric/libs/*.jar
+!forge/libs/*.jar
+!common/libs/
+!fabric/libs/
+!forge/libs/

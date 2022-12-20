@@ -40,18 +40,25 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build
-        run: ./gradlew :fabric:build :forge:build
+        run: ./gradlew :build :fabric:build :forge:build
+
+      - name: Capture build artifacts (Common)
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
+        uses: actions/upload-artifact@v2
+        with:
+          name: improved-animations-${{ steps.ref.outputs.branch }}
+          path: fabric/build/libs/*[0-9].jar
 
       - name: Capture build artifacts (Fabric)
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v2
         with:
-          name: animationoverhaul-fabric-${{ steps.ref.outputs.branch }}
+          name: improved-animations-fabric-${{ steps.ref.outputs.branch }}
           path: fabric/build/libs/*[0-9].jar
 
       - name: Capture build artifacts (Forge)
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v2
         with:
-          name: animationoverhaul-forge-${{ steps.ref.outputs.branch }}
+          name: improved-animations-forge-${{ steps.ref.outputs.branch }}
           path: forge/build/libs/*[0-9].jar

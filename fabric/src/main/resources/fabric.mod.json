@@ -5,9 +5,14 @@
   "name": "${name}",
   "description": "A mod for Fabric and Forge that rewrites player animations!",
   "authors": [
+    "Qboi123",
+    "DrAlpha",
     "LizIsTired"
   ],
   "contributors": [
+    "DrAlpha",
+    "fmbellomy",
+    "mmm1245",
     "James Pelter (Trainguy)",
     "Marvin Schürz (MineToBlend)",
     "Coffee"
@@ -29,7 +34,6 @@
   },
   "depends": {
     "fabric": "*",
-    "minecraft": "1.19.2",
-    "pollen": ">=1.4.1"
+    "minecraft": "1.19.2"
   }
 }
